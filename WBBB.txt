@@ -1,0 +1,1777 @@
+White Box Testing
+
+White Box Testing is a software testing technique where the tester has knowledge of the internal code, logic, structure, and flow of the application.
+
+In simple words:
+
+White Box Testing = Testing the inside of the software/code.
+
+The tester looks at how the program works internally, rather than only checking what output it produces.
+
+Simple Example
+
+Suppose we have:
+
+if (age >= 18) {
+    System.out.println("Eligible to Vote");
+} else {
+    System.out.println("Not Eligible");
+}
+
+In Black Box Testing, we mainly test:
+
+age = 20 → Eligible
+age = 15 → Not Eligible
+
+In White Box Testing, we also examine the code and ask:
+
+Did we execute the if condition?
+Did we execute the else condition?
+Are both paths tested?
+Are all statements executed?
+What happens at different logical conditions?
+Types of White Box Testing
+
+The major types/techniques are:
+
+1. Statement Coverage
+2. Branch Coverage
+3. Path Coverage
+4. Condition Coverage
+5. Decision Coverage
+6. Data Flow Testing
+7. Control Flow Testing
+
+For students, I recommend teaching the first 5 first, because they are easier to understand.
+
+1. Statement Coverage
+
+Statement Coverage checks whether every executable statement in the code has been executed at least once.
+
+Example
+if (age >= 18) {
+    System.out.println("Adult");
+}
+
+System.out.println("Welcome");
+
+Test:
+
+age = 20
+
+Execution:
+
+if condition → TRUE
+     ↓
+Print "Adult"
+     ↓
+Print "Welcome"
+
+Both statements are executed.
+
+So:
+
+Statement Coverage = 100%
+
+Formula
+
+Statement Coverage =
+
+Executed Statements / Total Statements × 100
+
+Easy student explanation
+
+"Did we run every line of code?"
+
+2. Branch Coverage
+
+Branch Coverage checks whether each possible branch/outcome of a decision has been executed.
+
+For example:
+
+if (age >= 18) {
+    System.out.println("Adult");
+} else {
+    System.out.println("Minor");
+}
+
+There are two branches:
+
+        age >= 18?
+         /      \
+      TRUE      FALSE
+       ↓          ↓
+    Adult       Minor
+
+We need two test cases:
+
+Test Case	Age	Result	Branch
+TC01	20	Adult	TRUE
+TC02	15	Minor	FALSE
+
+Therefore:
+
+Branch Coverage = 100%
+
+Easy explanation
+
+"Did we test every direction the decision can take?"
+
+3. Path Coverage
+
+Path Coverage checks whether different execution paths through the program have been executed.
+
+Consider:
+
+if (age >= 18) {
+    if (hasLicense) {
+        System.out.println("Can Drive");
+    }
+}
+
+Possible paths include:
+
+Path 1:
+age >= 18 → FALSE
+        ↓
+       END
+Path 2:
+age >= 18 → TRUE
+        ↓
+hasLicense → TRUE
+        ↓
+Can Drive
+Path 3:
+age >= 18 → TRUE
+        ↓
+hasLicense → FALSE
+        ↓
+END
+
+So we need test cases covering these different paths.
+
+Easy explanation
+
+"Did we test all possible routes through the code?"
+
+4. Condition Coverage
+
+Condition Coverage checks whether each individual condition evaluates to TRUE and FALSE.
+
+Example:
+
+if (age >= 18 && hasLicense) {
+    System.out.println("Can Drive");
+}
+
+There are two conditions:
+
+Condition 1 → age >= 18
+Condition 2 → hasLicense
+
+We want each condition to become:
+
+TRUE
+FALSE
+
+at least once.
+
+Example:
+
+Test	Age	License	Age ≥ 18	License	Result
+TC01	20	Yes	TRUE	TRUE	Drive
+TC02	20	No	TRUE	FALSE	No Drive
+TC03	16	Yes	FALSE	TRUE	No Drive
+
+Now both conditions have been tested as TRUE and FALSE.
+
+Easy explanation
+
+"Did every individual condition get a chance to be TRUE and FALSE?"
+
+5. Decision Coverage
+
+Decision Coverage checks whether the overall decision result becomes both TRUE and FALSE.
+
+Example:
+
+if (age >= 18 && hasLicense) {
+    System.out.println("Can Drive");
+}
+
+The overall decision is:
+
+age >= 18 AND hasLicense
+
+We need:
+
+TRUE  → Can Drive
+FALSE → Cannot Drive
+
+Example:
+
+Age	License	Overall Decision
+20	Yes	TRUE
+20	No	FALSE
+
+Therefore, both decision outcomes are covered.
+
+6. Data Flow Testing
+
+Data Flow Testing focuses on how variables are declared, assigned, used, and modified throughout the program.
+
+Example:
+
+int marks;
+
+marks = 80;
+
+if (marks >= 40) {
+    System.out.println(marks);
+}
+
+Here:
+
+Declaration → marks
+Assignment  → marks = 80
+Usage       → marks >= 40
+Usage       → println(marks)
+
+We check whether data is being properly handled throughout its lifecycle.
+
+Easy explanation
+
+"Where is the data created, changed, and used?"
+
+7. Control Flow Testing
+
+Control Flow Testing focuses on the flow of execution within the program.
+
+Example:
+
+       Start
+         ↓
+    Check Age
+      /    \
+   TRUE    FALSE
+    ↓        ↓
+ Adult     Minor
+    \        /
+      ↓
+     End
+
+The tester studies this flow to identify different execution routes.
+
+It is commonly represented using a Control Flow Graph (CFG).
+
+Easy explanation
+
+"How does the program move from one statement/decision to another?"
+
+White Box Testing — Quick Comparison
+Technique	Main Question
+Statement Coverage	Did we execute every statement?
+Branch Coverage	Did we execute every branch?
+Path Coverage	Did we test different execution paths?
+Condition Coverage	Did every condition become TRUE and FALSE?
+Decision Coverage	Did the overall decision become TRUE and FALSE?
+Data Flow Testing	How is data created, changed and used?
+Control Flow Testing	How does execution flow through the program?
+🧠 Best Way to Explain to Students
+
+Give them this simple memory trick:
+
+Statement → Line
+Branch → Direction
+Path → Route
+Condition → Individual Condition
+Decision → Overall Result
+Data Flow → Variable/Data
+Control Flow → Program Movement
+
+One-line definition for exams
+
+White Box Testing is a software testing technique in which the internal code, logic, structure, conditions, and execution paths of the 
+application are examined and tested.
+
+Important: White Box Testing is generally associated with developers or testers who have access to source code, 
+and it is commonly used at the unit and integration testing levels.
+
+
+Black Box Testing and Its Types
+What is Black Box Testing?
+
+Black Box Testing is a software testing technique where the tester tests the functionality of the application without knowing or examining its internal source code or implementation logic.
+
+In simple words:
+
+Black Box Testing = Test the software from the outside without looking inside the code.
+
+The tester focuses on:
+
+What input is given?
+What output is expected?
+Does the application behave according to the requirements?
+Simple Example — Login Page
+
+Suppose we have:
+
+Username: __________
+Password: __________
+
+       [ Login ]
+
+A Black Box tester doesn't care how the login functionality is coded internally.
+
+They test:
+
+Test	Username	Password	Expected Result
+TC01	valid	valid	Login successful
+TC02	valid	invalid	Error message
+TC03	invalid	valid	Error message
+TC04	blank	blank	Validation message
+TC05	valid	blank	Password required
+
+The tester is checking behavior, not source code.
+
+Types of Black Box Testing
+
+Black Box Testing can be divided into different test design techniques.
+
+The most important ones for students are:
+
+Equivalence Partitioning (ECP)
+Boundary Value Analysis (BVA)
+Decision Table Testing
+State Transition Testing
+Use Case Testing
+Error Guessing
+
+Let's understand each with simple examples.
+
+1. Equivalence Partitioning — ECP
+Idea:
+
+Instead of testing every possible input, we divide inputs into groups called equivalence classes.
+
+We assume that values within the same group should behave similarly.
+
+Example
+
+Suppose an application accepts age from 18 to 60.
+
+We can divide the inputs into:
+
+Partition	Age	Valid/Invalid
+Class 1	Below 18	❌ Invalid
+Class 2	18–60	✅ Valid
+Class 3	Above 60	❌ Invalid
+
+Instead of testing:
+
+1, 2, 3, 4, 5...17
+
+we can select representative values:
+
+10 → Invalid
+30 → Valid
+70 → Invalid
+Easy student explanation
+
+ECP = Divide a large group into smaller groups and test representative values.
+
+2. Boundary Value Analysis — BVA
+
+BVA focuses on the boundaries/edges of valid and invalid ranges.
+
+Why?
+
+Because defects frequently occur around boundaries.
+
+Example
+
+Age allowed:
+
+18 ───────────── 60
+
+We should test:
+
+17 → Invalid
+18 → Valid
+19 → Valid
+
+59 → Valid
+60 → Valid
+61 → Invalid
+
+So:
+
+Input	Expected
+17	❌ Invalid
+18	✅ Valid
+19	✅ Valid
+59	✅ Valid
+60	✅ Valid
+61	❌ Invalid
+Easy student explanation
+
+BVA = Test the edges.
+
+Memory Trick
+
+ECP → Groups
+
+BVA → Boundaries
+
+3. Decision Table Testing
+
+Decision Table Testing is useful when the application's behavior depends on multiple conditions or business rules.
+
+Example — Loan Approval
+
+Suppose a bank approves a loan when:
+
+Customer has a good credit score
+Customer has sufficient income
+Condition	Rule 1	Rule 2	Rule 3	Rule 4
+Good Credit?	Yes	Yes	No	No
+Sufficient Income?	Yes	No	Yes	No
+Decision	Approve	Reject	Reject	Reject
+
+This helps us test different combinations of conditions.
+
+Easy student explanation
+
+Decision Table = Test combinations of conditions and their resulting actions.
+
+4. State Transition Testing
+
+State Transition Testing is used when the system's behavior changes depending on its current state.
+
+Example — ATM Card
+
+Imagine an ATM card has these states:
+
+Active
+   ↓
+Wrong PIN
+   ↓
+Wrong PIN
+   ↓
+Wrong PIN
+   ↓
+Blocked
+
+We can test:
+
+Current State	Action	Next State
+Active	Correct PIN	Active
+Active	Wrong PIN	Wrong PIN Count = 1
+Wrong PIN 1	Wrong PIN	Wrong PIN Count = 2
+Wrong PIN 2	Wrong PIN	Blocked
+
+Another common example is an e-commerce order:
+
+Placed
+  ↓
+Confirmed
+  ↓
+Shipped
+  ↓
+Delivered
+
+The system behaves differently depending on the current state.
+
+Easy student explanation
+
+State Transition = Test how the application moves from one state to another.
+
+5. Use Case Testing
+
+Use Case Testing focuses on testing the system based on real-world user scenarios.
+
+For example, an e-commerce application may have:
+
+Login
+   ↓
+Search Product
+   ↓
+Add to Cart
+   ↓
+Checkout
+   ↓
+Make Payment
+   ↓
+Order Confirmed
+
+We can create test cases around this complete user journey.
+
+Example
+
+Use Case: Purchase a product
+
+Login
+Search product
+Select product
+Add to cart
+Checkout
+Enter address
+Make payment
+Verify order confirmation
+
+We can also test alternate scenarios:
+
+Payment Successful → Order Confirmed
+
+Payment Failed → Payment Error
+
+Product Out of Stock → Cannot Purchase
+Easy student explanation
+
+Use Case Testing = Test the application through real user scenarios.
+
+6. Error Guessing
+
+Error Guessing is based on the tester's experience, intuition, and knowledge of common mistakes.
+
+The tester tries inputs or actions that are likely to cause defects.
+
+Example — Login
+
+A tester may try:
+
+Username = blank
+Password = blank
+
+Then:
+
+Username = valid
+Password = blank
+
+Then:
+
+Username = blank
+Password = valid
+
+They might also try:
+
+Very long username
+Very long password
+Special characters
+Spaces
+Copy-paste values
+Multiple rapid clicks on Login
+Browser Back button
+Refresh during login
+
+These tests aren't necessarily derived from a formal mathematical technique; they come from tester experience and likely failure points.
+
+Easy student explanation
+
+Error Guessing = "I know where bugs usually hide, so I'll try those situations."
+
+Quick Comparison of Black Box Techniques
+Technique	Focus	Simple Question
+ECP	Input groups	"Can I divide inputs into groups?"
+BVA	Boundaries	"What happens at the edges?"
+Decision Table	Conditions & combinations	"What happens for each combination?"
+State Transition	States & transitions	"What happens when the state changes?"
+Use Case Testing	User scenarios	"Can the user complete the entire activity?"
+Error Guessing	Common mistakes	"Where do I think bugs might be?"
+ECP vs BVA — Very Important
+
+Students often confuse these two.
+
+Suppose:
+
+Password length must be 8–16 characters.
+
+ECP
+
+Create groups:
+
+< 8       → Invalid
+8–16      → Valid
+> 16      → Invalid
+
+Representative values:
+
+5   → Invalid
+10  → Valid
+20  → Invalid
+BVA
+
+Test around the boundaries:
+
+7   → Invalid
+8   → Valid
+9   → Valid
+
+15  → Valid
+16  → Valid
+17  → Invalid
+Remember:
+
+ECP = Test the groups
+BVA = Test the edges of the groups
+
+Black Box vs White Box
+Black Box	White Box
+Doesn't require knowledge of source code	Requires knowledge of internal code/logic
+Tests external behavior	Tests internal logic/structure
+Focuses on input and output	Focuses on code paths and statements
+Commonly performed by testers	Often performed by developers/testers with code knowledge
+ECP, BVA, Decision Table, State Transition	Statement, Branch, Path, Condition Coverage
+One-line memory trick for students
+
+🔲 Black Box: "I don't care how you built it; I'll check whether it works."
+⬜ White Box: "I know how you built it; I'll check whether the internal logic works correctly."
+
+also Guide me how i can use Jira with Waterfall Model guide Step By Step
+
+Absolutely. Jira can be used very effectively to teach and demonstrate the Waterfall Model, especially if your goal is to give students a practical, end-to-end Manual Testing project.
+
+One important point to tell students first:
+
+Jira is not an Agile-only tool.
+Jira is a work-management tool. We can configure its issues, workflows, versions, timelines, and dependencies to represent a Waterfall process.
+
+Jira workflows are essentially a set of statuses and transitions through which work items move, so we can create a workflow that mirrors Waterfall phases.
+
+1. First Understand What We Are Going to Build
+
+Since you're teaching students SDLC → Waterfall → STLC → Manual Testing, I recommend using one dummy project throughout the practical.
+
+Let's use:
+
+🎓 Student Query Reporting Tool
+
+You can tell students:
+
+"We are going to behave like a real software company. I will act as the Project Manager/Client, you will act as Business Analyst, Developer and Tester."
+
+Waterfall phases
+Requirements
+     ↓
+Analysis
+     ↓
+Design
+     ↓
+Development
+     ↓
+Testing
+     ↓
+Deployment
+     ↓
+Maintenance
+
+We will represent these phases inside Jira.
+
+2. What Students Will Learn
+
+By the end of the practical, students should know how to:
+
+Create a Jira project
+Understand Jira project/space
+Create Epics/Tasks
+Create requirements
+Assign work
+Set priority
+Set due dates
+Create workflow
+Move issues through Waterfall phases
+Create test-related tasks
+Create bugs
+Link bugs to requirements
+Track status
+Use comments
+Attach evidence
+Use timeline
+Track project progress
+Understand how Jira differs between Waterfall and Agile
+3. Our Complete Waterfall Project
+
+Let's assume the client says:
+
+"I want a Student Query Reporting Tool where students can register, login, submit queries and track their queries."
+
+We'll break it into:
+
+Requirement 1 — Registration
+Student should be able to register.
+Requirement 2 — Login
+Student should be able to login.
+Requirement 3 — Submit Query
+Student should be able to submit a query.
+Requirement 4 — Track Query
+Student should be able to see the status of submitted queries.
+Requirement 5 — Admin
+Admin should be able to view and update student queries.
+4. Step 1 — Create Jira Project
+
+Open your Jira account.
+
+Choose:
+
+Create project
+
+For teaching, you can create something like:
+
+Project Name:
+Student Query Reporting Tool
+
+Project key:
+
+SQRT
+
+So Jira issues might look like:
+
+SQRT-1
+SQRT-2
+SQRT-3
+5. Step 2 — Explain Jira's Basic Terminology
+
+Before creating anything, spend 10 minutes explaining these terms.
+
+Jira Term	Student-Friendly Meaning
+Project/Space	Container for the whole project
+Issue/Work item	Individual piece of work
+Epic	Large area of work
+Task	A particular activity
+Sub-task	Smaller activity under a task
+Bug	Defect
+Workflow	Movement of work through statuses
+Status	Current state of work
+Transition	Movement from one status to another
+Priority	Importance
+Assignee	Person responsible
+Reporter	Person who created/reported it
+Comment	Discussion/history
+Attachment	Evidence/document
+Version/Release	Group of work associated with a release
+Timeline	Visual schedule
+
+Jira describes issues as the basic building blocks of project work, and issues can contain subtasks that are tracked individually.
+
+6. Step 3 — Create Waterfall Workflow
+
+This is the most important practical part.
+
+Instead of:
+
+To Do → In Progress → Done
+
+we want:
+
+Requirements
+      ↓
+Analysis
+      ↓
+Design
+      ↓
+Development
+      ↓
+Testing
+      ↓
+UAT
+      ↓
+Deployment
+      ↓
+Maintenance
+      ↓
+Closed
+
+You can create/customize workflows in Jira using statuses and transitions.
+
+Recommended statuses
+REQUIREMENTS
+      ↓
+ANALYSIS
+      ↓
+DESIGN
+      ↓
+DEVELOPMENT
+      ↓
+TESTING
+      ↓
+UAT
+      ↓
+DEPLOYMENT
+      ↓
+MAINTENANCE
+      ↓
+CLOSED
+7. How to Create the Workflow
+
+Depending on whether you're using a company-managed or team-managed project and your Jira permissions, the screens can differ.
+
+For a company-managed setup, Jira's current workflow administration is under:
+
+Settings → Work items → Workflows
+
+You can create a workflow and then associate it with a workflow scheme/project.
+
+Create:
+
+Workflow Name
+Student Query Waterfall Workflow
+
+Add statuses:
+
+Requirements
+Analysis
+Design
+Development
+Testing
+UAT
+Deployment
+Maintenance
+Closed
+
+Then create transitions:
+
+Requirements → Analysis
+Analysis → Design
+Design → Development
+Development → Testing
+Testing → UAT
+UAT → Deployment
+Deployment → Maintenance
+Maintenance → Closed
+8. Show Students the Difference Between Status and Transition
+
+This is a very useful interview concept.
+
+Status
+
+Where is the work currently?
+
+Example:
+
+TESTING
+Transition
+
+How did the work move from one status to another?
+
+Example:
+
+DEVELOPMENT
+      ↓
+   Testing
+
+So:
+
+Status = Testing
+
+Transition = Development → Testing
+
+Jira specifically defines statuses as the current state and transitions as the actions/events that move work between statuses.
+
+9. Step 4 — Create Requirements
+
+Now act like a Business Analyst.
+
+Create issues such as:
+
+SQRT-1
+Student Registration Requirement
+
+Description:
+
+The system should allow a new student to register
+using first name, last name, email, phone number,
+username and password.
+SQRT-2
+Student Login Requirement
+SQRT-3
+Student Query Submission Requirement
+SQRT-4
+Student Query Tracking Requirement
+SQRT-5
+Admin Query Management Requirement
+
+Jira's Create action lets you enter the summary and required fields and create the work item.
+
+10. Step 5 — Put Requirements in Requirements Phase
+
+Initially:
+
+SQRT-1 → Requirements
+SQRT-2 → Requirements
+SQRT-3 → Requirements
+SQRT-4 → Requirements
+SQRT-5 → Requirements
+
+Now conduct a Requirement Review.
+
+Students can add comments like:
+
+Requirement reviewed.
+
+Email validation requirement needs clarification.
+
+You can attach:
+
+Requirement document
+Client notes
+BRD
+Screenshots
+Meeting notes
+11. Step 6 — Move to Analysis
+
+Once requirements are approved:
+
+Requirements
+     ↓
+Analysis
+
+Move the issues:
+
+SQRT-1 → Analysis
+SQRT-2 → Analysis
+...
+
+Now students perform analysis.
+
+For example:
+
+Registration Analysis
+
+Identify:
+
+Fields:
+First Name
+Last Name
+Email
+Phone
+Username
+Password
+Confirm Password
+Role
+
+Then identify validations:
+
+Email format
+Phone number length
+Password rules
+Mandatory fields
+Duplicate username
+Duplicate email
+12. Step 7 — Design Phase
+
+After analysis is complete:
+
+Analysis
+    ↓
+Design
+
+Students can attach:
+
+UI design
+Database design
+ER diagram
+Flowchart
+Architecture diagram
+
+For example:
+
+Student
+   ↓
+Registration Page
+   ↓
+Registration API
+   ↓
+Database
+
+You can create separate design tasks:
+
+SQRT-10 UI Design
+SQRT-11 Database Design
+SQRT-12 System Design
+13. Step 8 — Development Phase
+
+Now the developer starts coding.
+
+Create tasks such as:
+
+SQRT-20 Develop Registration Module
+
+SQRT-21 Develop Login Module
+
+SQRT-22 Develop Query Submission Module
+
+SQRT-23 Develop Query Tracking Module
+
+SQRT-24 Develop Admin Module
+
+Move them:
+
+DESIGN
+   ↓
+DEVELOPMENT
+14. Step 9 — Testing Phase
+
+Now comes the part that is especially useful for your Manual Testing practical.
+
+Create testing tasks.
+
+For example:
+
+SQRT-30 Test Registration Module
+SQRT-31 Test Login Module
+SQRT-32 Test Query Submission
+SQRT-33 Test Query Tracking
+SQRT-34 Test Admin Module
+
+Move them:
+
+DEVELOPMENT
+       ↓
+     TESTING
+15. Now Connect Jira With STLC
+
+This is where your students will really understand the relationship.
+
+Waterfall
+Requirements
+     ↓
+Analysis
+     ↓
+Design
+     ↓
+Development
+     ↓
+Testing
+Testing phase → STLC
+
+Inside the Testing phase:
+
+Test Planning
+     ↓
+Test Scenario Identification
+     ↓
+Test Case Design
+     ↓
+Test Environment Setup
+     ↓
+Test Execution
+     ↓
+Defect Reporting
+     ↓
+Retesting
+     ↓
+Regression Testing
+     ↓
+Test Closure
+
+This makes an excellent classroom practical.
+
+16. Create a Test Case Task
+
+For example:
+
+SQRT-30
+Test Registration Module
+
+Description:
+
+Prepare and execute test cases for the Student Registration module.
+
+Students can attach their Excel test case document.
+
+Example:
+
+TC ID	Scenario	Expected Result	Actual Result	Status
+TC01	Valid registration	Registration successful	Registration successful	Pass
+TC02	Blank email	Validation message	Validation message	Pass
+TC03	Invalid email	Error message	Error message	Pass
+TC04	Existing username	Error message	Registration successful	Fail
+17. Now Teach Bug Reporting in Jira
+
+Suppose:
+
+TC04 FAILED
+
+Student creates:
+
+Bug
+SQRT-40
+
+Summary:
+
+System allows registration with existing username
+
+Description:
+
+Steps to Reproduce:
+
+1. Open Registration page
+2. Enter existing username
+3. Enter valid remaining details
+4. Click Register
+
+Expected:
+System should display "Username already exists."
+
+Actual:
+Registration is completed successfully.
+
+Add:
+
+Priority: High
+Environment: Chrome / Windows
+Attachment: Screenshot
+
+This is a realistic manual-testing workflow.
+
+18. Link Bug With Requirement
+
+This is extremely useful to demonstrate traceability.
+
+You have:
+
+SQRT-1
+Student Registration Requirement
+
+and:
+
+SQRT-40
+Existing username accepted
+
+Link them.
+
+Conceptually:
+
+Requirement
+     ↓
+Development
+     ↓
+Test Case
+     ↓
+Bug
+
+This demonstrates Requirement Traceability.
+
+19. Bug Workflow
+
+You can create a separate Bug workflow:
+
+Open
+  ↓
+Assigned
+  ↓
+In Progress
+  ↓
+Fixed
+  ↓
+Retest
+  ↓
+Verified
+  ↓
+Closed
+
+If retesting fails:
+
+Retest
+   ↓
+Failed
+   ↓
+Reopened
+   ↓
+Developer
+
+Then:
+
+Fixed
+ ↓
+Retest
+ ↓
+Verified
+ ↓
+Closed
+
+This is perfect for teaching Defect Life Cycle.
+
+20. Step 10 — UAT
+
+After testing is completed:
+
+TESTING
+   ↓
+UAT
+
+Now the client/business user verifies whether the system satisfies the business requirements.
+
+Create:
+
+SQRT-50
+User Acceptance Testing
+
+Possible result:
+
+UAT → Passed
+
+or:
+
+UAT → Failed
+
+If failed:
+
+UAT
+ ↓
+Development
+
+But remember: real projects may allow controlled change/rework, even in a Waterfall process. Waterfall does not mean "nothing can ever go backward"; it means phases are planned and executed sequentially with formal handoffs.
+
+21. Step 11 — Deployment
+
+After UAT approval:
+
+UAT
+ ↓
+Deployment
+
+Create:
+
+SQRT-60
+Deploy Student Query Reporting Tool
+
+Description:
+
+Deploy application to production environment.
+22. Step 12 — Maintenance
+
+After deployment:
+
+Production
+    ↓
+Maintenance
+
+Suppose a user reports:
+
+"Forgot password functionality is not working."
+
+Create a Bug:
+
+SQRT-70
+Forgot Password functionality not working
+
+Move it through:
+
+Open
+ ↓
+Assigned
+ ↓
+In Progress
+ ↓
+Fixed
+ ↓
+Retest
+ ↓
+Verified
+ ↓
+Closed
+23. Use Jira Timeline for Waterfall
+
+This is very important.
+
+A timeline/Gantt-style view lets you visualize when work starts, ends, and how work is sequenced. Jira's current Timeline documentation describes it as a planning view for timing, duration, and dependencies.
+
+You can create something like:
+
+August
+────────────────────────────────────────────
+
+Requirements  ███████
+
+Analysis             ██████
+
+Design                    ███████
+
+Development                     ███████████
+
+Testing                                      ███████
+
+UAT                                               ███
+
+Deployment                                            ██
+
+This visually demonstrates Waterfall much better than simply showing a Kanban board.
+
+24. Add Dependencies
+
+This is another great classroom concept.
+
+For example:
+
+Requirements
+      ↓
+Analysis
+      ↓
+Design
+      ↓
+Development
+      ↓
+Testing
+
+Testing cannot properly begin until the relevant build is available.
+
+So you can demonstrate dependencies such as:
+
+Design depends on Requirements
+Development depends on Design
+Testing depends on Development
+UAT depends on Testing
+Deployment depends on UAT
+
+Jira's timeline/advanced planning capabilities can visualize dependencies; some advanced planning features depend on Jira plan/edition.
+
+25. Use Versions/Releases
+
+You can also use Jira Versions/Releases to represent major project milestones or releases. Jira allows versions to have start dates, release dates, descriptions, and associated work items.
+
+For example:
+
+Version 1.0
+Student Query Reporting Tool
+
+Release date:
+
+30 September 2026
+
+You can associate relevant work items with that release.
+
+26. Recommended Jira Structure for Your Class
+
+I would set up your demo like this:
+
+                    STUDENT QUERY
+                  REPORTING TOOL
+                         │
+          ┌──────────────┴──────────────┐
+          │                             │
+     REQUIREMENTS                    PROJECT
+          │
+     ┌────┴────┐
+     │         │
+Registration  Login
+     │
+     ↓
+   ANALYSIS
+     │
+     ↓
+   DESIGN
+     │
+     ↓
+ DEVELOPMENT
+     │
+     ↓
+   TESTING
+     │
+     ├── Test Cases
+     ├── Test Execution
+     ├── Bugs
+     ├── Retesting
+     └── Regression
+     │
+     ↓
+     UAT
+     │
+     ↓
+  DEPLOYMENT
+     │
+     ↓
+ MAINTENANCE
+27. A Very Good 2–3 Hour Practical Class
+
+Since you're teaching students, I would not explain Jira features randomly. Make them build one project from scratch.
+
+Part 1 — 20 minutes
+
+Explain:
+
+Waterfall
+   ↓
+Requirements
+   ↓
+Analysis
+   ↓
+Design
+   ↓
+Development
+   ↓
+Testing
+   ↓
+Deployment
+
+Then:
+
+Jira = Tool used to manage/track this work
+Part 2 — 30 minutes
+
+Students create:
+
+Jira account
+Project
+Project key
+Team members
+Issues
+
+Teach:
+
+Project
+Issue
+Epic
+Task
+Bug
+Assignee
+Reporter
+Priority
+Status
+Workflow
+Part 3 — 30 minutes
+
+Create Waterfall workflow:
+
+Requirements
+↓
+Analysis
+↓
+Design
+↓
+Development
+↓
+Testing
+↓
+UAT
+↓
+Deployment
+↓
+Maintenance
+↓
+Closed
+Part 4 — 30 minutes
+
+Create actual project requirements:
+
+Registration
+Login
+Submit Query
+Track Query
+Admin
+
+Then move them through:
+
+Requirements → Analysis → Design
+Part 5 — 40 minutes
+
+Now become testers.
+
+Create:
+
+Test Scenarios
+Test Cases
+Test Execution
+
+Find a defect.
+
+Create:
+
+BUG
+
+Then demonstrate:
+
+Open
+ ↓
+Assigned
+ ↓
+In Progress
+ ↓
+Fixed
+ ↓
+Retest
+ ↓
+Verified
+ ↓
+Closed
+28. One Important Teaching Point
+
+Don't teach students:
+
+❌ "Jira is an Agile tool."
+
+Instead teach:
+
+✅ "Jira is a project/work-management tool. Agile teams commonly use it with Scrum/Kanban, but Jira's workflows, issues, timelines, versions and dependencies can also be configured to support a Waterfall-style process."
+
+This distinction is important.
+
+Also, don't force Scrum concepts such as Sprint, Story Points, Product Backlog, Daily Scrum, etc. into your Waterfall demonstration unless you are specifically teaching the difference between Agile and Waterfall.
+
+For your Waterfall practical, focus on:
+
+Requirements → Documents → Approvals → Phase completion → Handoffs → Development → Testing → Defects → UAT → Deployment.
+
+⭐ The Practical Project I Recommend for Your Students
+
+Since you've already been working with the Student Query Reporting Tool, use that same application for the entire training:
+
+SDLC
+
+→ Waterfall Model
+
+→ Jira Project
+
+→ Requirements
+
+→ BRD/SRS
+
+→ Design
+
+→ Development
+
+→ STLC
+
+→ Test Scenarios
+
+→ Test Cases
+
+→ Test Execution
+
+→ Bug Reporting in Jira
+
+→ Retesting
+
+→ Regression Testing
+
+→ UAT
+
+→ Deployment
+
+→ Maintenance
+
+That way, students aren't learning Jira as a separate software tool. They learn how Jira is used by a real software team to manage the complete SDLC and testing process.
+
+Share the WebSites for Manual Testing Purpose
+
+If you mean websites that students can actually use to practice Manual Testing, here are some good options. I’d recommend using a mix of simple websites and intentionally buggy practice applications.
+
+🧪 Best Websites for Manual Testing Practice
+Website	Best For	Difficulty
+Sauce Labs Demo Apps	E-commerce, login, cart, checkout	⭐⭐
+The Internet	Functional testing, authentication, alerts, uploads, tables	⭐⭐
+OWASP Juice Shop	Advanced web testing & security awareness	⭐⭐⭐⭐
+ParaBank	Banking workflows, transactions, login	⭐⭐⭐
+OrangeHRM Demo	Login, employee management, forms, search	⭐⭐⭐
+DemoBlaze	E-commerce functional testing	⭐⭐
+Reqres	API testing	⭐⭐⭐
+1. Best for Beginners — The Internet
+
+The Internet – Heroku Test Site
+
+This is probably one of the best sites for your students' first practical session because it contains many small, independent features:
+
+Login
+Checkboxes
+Dropdowns
+File upload
+File download
+Alerts
+Frames
+Windows
+Tables
+Authentication
+Broken images
+JavaScript errors
+Status codes
+
+Students can create test scenarios, test cases and bug reports for individual features.
+
+2. E-Commerce — SauceDemo
+
+SauceDemo
+
+Excellent for teaching a realistic workflow:
+
+Login
+  ↓
+Product Search/Selection
+  ↓
+Add to Cart
+  ↓
+Cart Validation
+  ↓
+Checkout
+  ↓
+Address Details
+  ↓
+Order
+
+Students can practice:
+
+Smoke Testing → Functional Testing → UI Testing → Negative Testing → Regression Testing
+
+3. Banking Application — ParaBank
+
+ParaBank Demo
+
+Very useful for teaching end-to-end business scenarios.
+
+Students can test:
+
+Registration
+Login
+Account creation
+Fund transfer
+Bill payment
+Account summary
+Transaction history
+
+You can give them a requirement such as:
+
+"A customer should be able to transfer money from one account to another."
+
+Then ask them to create:
+
+Requirement → Test Scenarios → Test Cases → Execute → Defect Report
+
+4. HR Application — OrangeHRM
+
+OrangeHRM Demo
+
+Good for students who are moving from beginner to intermediate level.
+
+They can test:
+
+Login
+Employee management
+Search
+Forms
+User management
+Leave-related functionality
+Navigation
+Validation
+
+This is particularly useful for explaining real-world enterprise applications.
+
+5. Demo E-Commerce — DemoBlaze
+
+DemoBlaze
+
+Good for practicing:
+
+Registration
+Login
+Product selection
+Cart
+Product details
+Checkout
+UI validation
+
+You can give students a mini-project:
+
+"Perform complete manual testing of an e-commerce application."
+
+6. Advanced Practice — OWASP Juice Shop
+
+OWASP Juice Shop
+
+This is an intentionally insecure application designed for security training.
+
+For your Manual Testing course, I wouldn't start here.
+
+Use it later when you introduce:
+
+Security Testing
+Authentication testing
+Authorization
+Input validation
+Session testing
+Vulnerability awareness
+⭐ What I Recommend for Your Students
+
+Since you're teaching Manual Testing from scratch, don't give students 10 websites at once.
+
+Use this progression:
+
+Day 1 — Simple Functional Testing
+
+The Internet
+
+Students test:
+
+Login
+Dropdown
+Checkbox
+File Upload
+Alerts
+Tables
+
+↓
+
+Day 2 — Realistic Application
+
+SauceDemo
+
+Students perform:
+
+Smoke Testing
+Functional Testing
+Negative Testing
+UI Testing
+Regression Testing
+
+↓
+
+Day 3 — Business Application
+
+ParaBank / OrangeHRM
+
+Students perform:
+
+Requirement Analysis
+Test Scenario Creation
+Test Case Design
+Test Execution
+Defect Reporting
+Retesting
+Regression
+
+↓
+
+Day 4 — Jira
+
+Take the defects discovered on the above applications and enter them into Jira.
+
+Your complete practical flow becomes:
+
+             REQUIREMENT
+                  ↓
+            TEST SCENARIO
+                  ↓
+             TEST CASE
+                  ↓
+            TEST EXECUTION
+                  ↓
+        ┌─────────┴─────────┐
+        ↓                   ↓
+      PASS                 FAIL
+                            ↓
+                         BUG
+                            ↓
+                       Jira Report
+                            ↓
+                       Developer Fix
+                            ↓
+                         RETEST
+                            ↓
+                    ┌───────┴───────┐
+                    ↓               ↓
+                  PASS             FAIL
+                    ↓               ↓
+                  CLOSE          REOPEN
+
+For your classroom, my top 3 would be:
+🥇 The Internet — learn individual testing techniques
+🥈 SauceDemo — learn end-to-end functional testing
+🥉 ParaBank — learn real-world business-flow testing
